@@ -477,3 +477,9 @@ Berdasarkan hasil pengujian white box pada sistem POS Filament, seluruh fitur ut
 
 Dengan demikian, sistem POS Filament dapat dinyatakan berhasil menjalankan fungsi-fungsi utama sesuai skenario white box yang telah ditentukan. Penggunaan Filament memberikan dukungan struktur pengembangan yang terstandarisasi melalui resource, page, form, table, access control, dan observer sehingga proses pengujian dapat dilakukan secara konsisten pada modul-modul utama sistem.
 
+# Hasil Testing dengan PHPUnit
+
+![Hasil Testing PHPUnit 1](test-result-wb-filament-1.png)
+![Hasil Testing PHPUnit 1](test-result-wb-filament-2.png)
+![Hasil Testing PHPUnit 1](test-result-wb-filament-3.png)
+

@@ -197,10 +197,6 @@
   * `app/Http/Controllers/CashFlowController.php`
   * `app/Models/CashboxFlow.php`
 
-### Keterangan Perbaikan
-
-Pada hasil pengujian sebelumnya, beberapa skenario Cash Flow masih gagal karena assertion pengujian belum sesuai dengan response controller. Setelah test case disesuaikan dengan perilaku controller yang sebenarnya, seluruh skenario Cash Flow berhasil dijalankan. Perbaikan ini menunjukkan bahwa fungsi Cash Flow sudah berjalan sesuai skenario, yaitu pencatatan kas masuk, pencatatan kas keluar, validasi source type, penghapusan cashflow manual, serta proteksi terhadap cashflow otomatis.
-
 ---
 
 # Tabel 12. Hasil Pengujian White Box Fitur Report

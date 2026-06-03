@@ -347,17 +347,6 @@ Berdasarkan hasil eksekusi PHPUnit terbaru, seluruh pengujian pada sistem POS La
 
 ---
 
-# Catatan Perbaikan Cash Flow pada Laravel Konvensional
-
-| No | Kondisi Sebelumnya                  | Perbaikan yang Dilakukan                                      | Hasil Setelah Perbaikan                  |
-| -- | ----------------------------------- | ------------------------------------------------------------- | ---------------------------------------- |
-| 1  | Redirect tidak sesuai expected      | Assertion test disesuaikan dengan response controller aktual   | Pengujian create cash in berhasil        |
-| 2  | Redirect tidak sesuai expected      | Assertion test disesuaikan dengan response controller aktual   | Pengujian create cash out berhasil       |
-| 3  | Session validation tidak muncul     | Skenario validasi disesuaikan dengan flow validasi controller  | Pengujian source type invalid berhasil   |
-| 4  | Cash Flow hanya memperoleh 40%      | Test case diperbaiki tanpa mengubah fungsi utama yang berjalan | Cash Flow memperoleh 100%                |
-
----
-
 # Daftar File Testing
 
 | No | File Testing |

@@ -7,17 +7,17 @@
 | No | Modul | Filament | Laravel 12 Konvensional | Selisih / Analisis |
 | -- | ----- | -------- | ----------------------- | ------------------ |
 | 1 | Login / Auth | 4/4 PASS (100%) | 4/4 PASS (100%) | Setara. Keduanya berhasil menguji login valid, login tidak valid, logout, dan update profil. |
-| 2 | Dashboard | 6/6 PASS (100%) | 6/6 PASS (100%) | Setara. Keduanya menguji total transaksi, total income, latest transaction, akses dashboard, authorization, dan authentication. |
+| 2 | Dashboard | 6/6 PASS (100%) | 6/6 PASS (100%) | Setara. Pada Filament diuji melalui `DashboardTest.php`, sedangkan pada Laravel diuji melalui pengujian dashboard dan query agregasi. |
 | 3 | Kasir / POS | 10/10 PASS (100%) | 10/10 PASS (100%) | Setara. Keduanya menguji checkout, item transaksi, sinkronisasi stok, validasi stok, validasi pembayaran, subtotal, total, dan kembalian. |
-| 4 | Produk | 6/6 PASS (100%) | 6/6 PASS (100%) | Setara. Keduanya menguji create, update, soft delete, validasi harga, default stock, dan status produk. |
-| 5 | Kategori | 4/4 PASS (100%) | 4/4 PASS (100%) | Setara. Keduanya menguji create, update, soft delete, dan relasi kategori dengan produk. |
+| 4 | Produk | 6/6 PASS (100%) | 6/6 PASS (100%) | Setara. Keduanya menguji create, update, delete/soft delete, validasi harga, default stock, dan status produk. |
+| 5 | Kategori | 4/4 PASS (100%) | 4/4 PASS (100%) | Setara. Keduanya menguji create, update, delete/soft delete, dan keterkaitan kategori dengan produk. |
 | 6 | Inventory | 5/5 PASS (100%) | 5/5 PASS (100%) | Setara. Keduanya menguji stock in, stock out, adjustment stock, restore stock, dan validasi stok tidak cukup. |
-| 7 | Transaksi | 7/7 PASS (100%) | 7/7 PASS (100%) | Setara. Keduanya menguji relasi transaction item, payment method, product relation, restore stock, delete cashflow otomatis, route transaksi, dan detail transaksi. |
-| 8 | Cash Flow | 5/5 PASS (100%) | 5/5 PASS (100%) | Setara. |
-| 9 | Payment Method | 6/6 PASS (100%) | 6/6 PASS (100%) | Setara. Keduanya menguji create, update, soft delete, restore, field `is_cash`, dan validasi payment method. |
-| 10 | Report | 4/4 PASS (100%) | 4/4 PASS (100%) | Setara. Keduanya menguji total transaksi, filter laporan, latest transaction, dan aggregate query. |
+| 7 | Transaksi | 7/7 PASS (100%) | 7/7 PASS (100%) | Setara. Keduanya menguji data transaksi, item transaksi, metode pembayaran, produk, pengembalian stok, cashflow otomatis, akses halaman, dan detail transaksi. |
+| 8 | Cash Flow | 5/5 PASS (100%) | 5/5 PASS (100%) | Setara pada data terbaru. Laravel sebelumnya sempat mengalami mismatch assertion, tetapi sudah diperbaiki sehingga seluruh skenario Cash Flow valid. |
+| 9 | Payment Method | 6/6 PASS (100%) | 6/6 PASS (100%) | Setara. Keduanya menguji create, update, delete/soft delete, restore, field `is_cash`, dan validasi payment method. |
+| 10 | Report | 4/4 PASS (100%) | 4/4 PASS (100%) | Setara. Pada Filament diuji melalui `ReportTest.php`, sedangkan pada Laravel diuji melalui pengujian report dan aggregate query. |
 | 11 | User | 4/4 PASS (100%) | 4/4 PASS (100%) | Setara. Keduanya menguji create user, update user, verifikasi user, dan delete user. |
-| 12 | Role / Permission | 10/10 PASS (100%) | 10/10 PASS (100%) | Setara. Keduanya menguji role, permission, exact permission, wildcard permission, user tanpa role, middleware authorization, JSON authorization, dan akses dashboard berdasarkan permission. |
+| 12 | Role / Permission | 10/10 PASS (100%) | 10/10 PASS (100%) | Setara. Keduanya menguji role, permission, permission berdasarkan role, middleware authorization, dan akses dashboard berdasarkan permission. |
 | 13 | Setting | 7/7 PASS (100%) | 7/7 PASS (100%) | Setara. Keduanya menguji halaman setting, update setting, upload logo, validasi field wajib, validasi print type, validasi image, dan penggantian logo lama. |
 
 ---
@@ -37,28 +37,53 @@
 | Test gagal | 0 | 0 |
 | Authentication testing | Ada | Ada |
 | Authorization testing | Ada | Ada |
-| Middleware testing | Ada | Ada |
+| Middleware / access testing | Ada, melalui `AccessTest.php` dan `RolePermissionTest.php` | Ada, melalui middleware dan permission testing |
 | CRUD testing | Ada | Ada |
-| Relationship testing | Ada | Ada |
-| Aggregate query testing | Ada | Ada |
-| Arithmetic / POS logic testing | Ada | Ada |
+| Relasi model | Tercakup dalam test modul terkait, bukan file khusus `RelationshipTest.php` | Ada, termasuk melalui `RelationshipTest.php` |
+| Statistik dashboard/laporan | Tercakup dalam `DashboardTest.php` dan `ReportTest.php` | Ada, termasuk melalui `AggregateQueryTest.php` |
+| Arithmetic / POS logic testing | Ada, melalui test POS terkait | Ada, termasuk melalui `ArithmeticLogicTest.php` |
 | Cash Flow testing | 5/5 PASS | 5/5 PASS |
 | Setting testing | 7/7 PASS | 7/7 PASS |
 | Kesimpulan hasil uji | Seluruh skenario valid | Seluruh skenario valid |
 
 ---
 
-# Tabel Pembacaan Total yang Benar
+# Tabel Pembacaan File Testing
 
-| Kelompok Pengujian | Filament | Laravel 12 Konvensional | Analisis |
-| ------------------ | -------- | ----------------------- | -------- |
-| Modul identik yang dibandingkan | 13 modul | 13 modul | Kedua sistem memiliki cakupan modul yang sama, sehingga perbandingan dilakukan pada ruang lingkup yang seimbang. |
-| Total skenario inti | 78 skenario | 78 skenario | Jumlah skenario inti pada kedua sistem sudah setara. |
-| Total skenario berhasil | 78 skenario | 78 skenario | Seluruh skenario berhasil dijalankan. |
-| Total skenario gagal | 0 skenario | 0 skenario | Tidak ada modul yang gagal pada data terbaru. |
-| Persentase keberhasilan | 100% | 100% | Secara hasil pengujian white box, kedua sistem sama-sama valid. |
-| Modul Cash Flow | 5/5 PASS | 5/5 PASS | Laravel sudah diperbaiki, sehingga tidak lagi menggunakan angka 2/5 atau 40%. |
-| Modul Setting | 7/7 PASS | 7/7 PASS | Setting sudah masuk dalam rekap Laravel, sehingga total bukan lagi 67 skenario. |
+| Komponen Pengujian | File Testing Filament | File Testing Laravel 12 Konvensional | Catatan Analisis |
+| ------------------ | --------------------- | ------------------------------------ | ---------------- |
+| Access / authorization | `AccessTest.php`, `RolePermissionTest.php` | `PermissionMiddlewareTest.php`, `RoleUserTest.php` | Sama-sama menguji akses dan permission, tetapi struktur file berbeda. |
+| Authentication | `AuthTest.php` | `AuthTest.php` | Setara. |
+| Cash Flow | `CashflowTest.php` | `CashFlowTest.php` | Setara secara cakupan modul. |
+| Category | `CategoryTest.php` | `KategoriTest.php` | Setara secara cakupan fitur, berbeda penamaan file. |
+| Dashboard | `DashboardTest.php` | `AggregateQueryTest.php`, `PermissionMiddlewareTest.php` | Filament tidak memakai nama `AggregateQueryTest.php`, tetapi pengujian dashboard tercakup pada `DashboardTest.php`. |
+| Inventory | `InventoryObserverTest.php` | `InventoryTest.php`, `ArithmeticLogicTest.php` | Filament menonjolkan observer inventory, sedangkan Laravel memisahkan logic inventory dan arithmetic. |
+| Payment Method | `PaymentMethodTest.php` | `PaymentMethodTest.php` | Setara. |
+| POS / Kasir | `PosAdvancedTest.php`, `PosCheckoutTest.php`, `PosLogicTest.php` | `PosTest.php`, `ArithmeticLogicTest.php` | Keduanya menguji POS, tetapi Filament memecah POS ke beberapa file test. |
+| Product | `ProductAccessTest.php`, `ProductTest.php` | `ProdukTest.php`, `ModelStateTest.php` | Filament memiliki file khusus akses produk. |
+| Receipt | `ReceiptControllerTest.php` | Tidak ditampilkan sebagai modul utama pada rekap Laravel terbaru | Receipt ada pada daftar testing Filament, tetapi tidak dimasukkan sebagai modul pembanding utama karena rekap perbandingan mengikuti 13 modul utama. |
+| Report | `ReportTest.php` | `AggregateQueryTest.php` | Filament tidak memakai nama `AggregateQueryTest.php`, tetapi pengujian laporan tercakup pada `ReportTest.php`. |
+| Setting | `SettingTest.php` | `SettingTest.php` | Setara. |
+| Transaction | `TransactionFlowTest.php`, `TransactionTest.php` | `TransaksiTest.php`, `RelationshipTest.php` | Filament menguji transaksi melalui file transaction, sedangkan Laravel juga memiliki file relationship khusus. |
+| User | `UserTest.php` | `RoleUserTest.php`, `AuthTest.php` | Setara secara cakupan user management. |
+| Relationship testing khusus | Tidak ada file khusus `RelationshipTest.php` | `RelationshipTest.php` | relasi diuji di dalam test modul terkait. |
+| Aggregate query testing khusus | Tidak ada file khusus `AggregateQueryTest.php` | `AggregateQueryTest.php` | statistik diuji melalui `DashboardTest.php` dan `ReportTest.php`. |
+
+---
+
+# Tabel Analisis Stabilitas Pengujian
+
+| Aspek | Filament | Laravel 12 Konvensional | Analisis |
+| ----- | -------- | ----------------------- | -------- |
+| Hasil akhir pengujian | 100% PASS | 100% PASS | Kedua sistem berhasil memenuhi seluruh skenario white box. |
+| Cash Flow | Stabil | Stabil setelah perbaikan test case | Perbedaan sebelumnya ada pada assertion, bukan kegagalan fungsi utama. |
+| Setting | 7/7 PASS | 7/7 PASS | Fitur Setting sudah teruji pada kedua sistem. |
+| Authentication | Valid | Valid | Login, credential validation, logout, dan update profil berhasil diuji. |
+| Authorization / access control | Valid | Valid | Akses berdasarkan permission berhasil diuji pada kedua sistem. |
+| Relasi model | Tercakup dalam test modul transaksi, kategori, dan produk | Diuji melalui test modul serta `RelationshipTest.php` | Filament tidak memiliki file khusus `RelationshipTest.php`, sehingga jangan ditulis sebagai komponen testing terpisah. |
+| Statistik dashboard/laporan | Diuji melalui `DashboardTest.php` dan `ReportTest.php` | Diuji melalui `AggregateQueryTest.php` | Filament tidak memiliki file khusus `AggregateQueryTest.php`, sehingga istilah aggregate query khusus hanya tepat untuk Laravel. |
+| Risiko mismatch response | Lebih rendah | Lebih tinggi jika controller tidak konsisten | Filament memiliki flow lebih terstandarisasi, sedangkan Laravel bergantung pada implementasi manual. |
+| Ketergantungan pada developer | Lebih rendah | Lebih tinggi | Laravel membutuhkan konsistensi manual pada controller, validation, redirect, dan response. |
 
 ---
 
@@ -78,22 +103,6 @@
 | Dashboard Widget | Dibantu widget dan komponen Filament | Manual melalui query controller dan Blade | Filament lebih efisien untuk tampilan admin, Laravel lebih bebas dalam desain. |
 | Route Management | Banyak dibantu oleh resource/page Filament | Manual pada route web dan controller | Laravel lebih eksplisit, tetapi jumlah konfigurasi lebih banyak. |
 | Testing Stability | Stabil karena banyak lifecycle terstandarisasi | Stabil setelah assertion disesuaikan dengan response controller | Pada data terbaru, keduanya stabil; risiko mismatch Laravel tetap lebih tinggi jika response tidak konsisten. |
-
----
-
-# Tabel Analisis Stabilitas Pengujian
-
-| Aspek | Filament | Laravel 12 Konvensional | Analisis |
-| ----- | -------- | ----------------------- | -------- |
-| Hasil akhir pengujian | 100% PASS | 100% PASS | Kedua sistem berhasil memenuhi seluruh skenario white box. |
-| Cash Flow | Stabil | Stabil setelah perbaikan test case | Perbedaan sebelumnya ada pada assertion, bukan kegagalan fungsi utama. |
-| Setting | 7/7 PASS | 7/7 PASS | Fitur Setting sudah teruji pada kedua sistem. |
-| Authentication | Valid | Valid | Login, credential validation, logout, dan update profil berhasil diuji. |
-| Authorization | Valid | Valid | Akses berdasarkan permission berhasil diuji. |
-| Relationship testing | Valid | Valid | Relasi antar model berhasil diuji. |
-| Aggregate query | Valid | Valid | Statistik dashboard dan laporan berhasil diuji. |
-| Risiko mismatch response | Lebih rendah | Lebih tinggi jika controller tidak konsisten | Filament memiliki flow lebih terstandarisasi, sedangkan Laravel bergantung pada implementasi manual. |
-| Ketergantungan pada developer | Lebih rendah | Lebih tinggi | Laravel membutuhkan konsistensi manual pada controller, validation, redirect, dan response. |
 
 ---
 
@@ -121,11 +130,7 @@
 
 Berdasarkan data terbaru, hasil white box testing menunjukkan bahwa sistem POS berbasis Filament dan sistem POS Laravel 12 konvensional sama-sama memperoleh hasil **100% PASS**. Seluruh modul utama yang diuji, yaitu Login/Auth, Dashboard, Kasir/POS, Produk, Kategori, Inventory, Transaksi, Cash Flow, Payment Method, Report, User, Role/Permission, dan Setting, berhasil dijalankan sesuai skenario pengujian.
 
-Perbedaan utama tidak lagi berada pada persentase keberhasilan pengujian, karena kedua sistem sudah sama-sama valid. Perbedaan utama berada pada pendekatan implementasi. Filament memiliki keunggulan pada otomatisasi karena banyak proses administratif seperti CRUD, form, table, resource, permission integration, dan response lifecycle dibantu oleh framework. Hal ini membuat struktur pengembangan lebih ringkas dan konsisten.
-
-Laravel 12 konvensional memiliki karakteristik berbeda. Sistem ini memberikan fleksibilitas lebih tinggi karena controller, route, validation, middleware, view, dan response dapat dikendalikan secara manual oleh developer. Namun, fleksibilitas tersebut meningkatkan kebutuhan konsistensi implementasi. Kasus Cash Flow sebelumnya menunjukkan bahwa pengujian dapat mengalami mismatch jika expected response pada test tidak disesuaikan dengan response controller yang sebenarnya. Setelah assertion diperbaiki, seluruh skenario Cash Flow berhasil dijalankan.
-
-Dengan demikian, dari sisi hasil white box testing, kedua sistem dapat dinyatakan sama-sama valid. Filament lebih unggul pada konsistensi dan otomatisasi pengembangan, sedangkan Laravel 12 konvensional lebih unggul pada fleksibilitas dan kontrol detail implementasi. Untuk konteks sistem POS, Filament lebih efisien untuk pengembangan fitur administratif yang cepat dan terstandarisasi, sedangkan Laravel konvensional lebih sesuai ketika sistem membutuhkan penyesuaian logic, tampilan, dan alur proses yang sangat spesifik.
+Filament lebih unggul pada otomatisasi karena banyak proses administratif seperti CRUD, form, table, resource, permission integration, dan response lifecycle dibantu oleh framework. Laravel 12 konvensional lebih unggul pada fleksibilitas karena controller, route, validation, middleware, view, dan response dapat dikendalikan secara manual oleh developer. Namun, fleksibilitas tersebut membutuhkan konsistensi implementasi agar hasil testing tetap stabil.
 
 ---
 
@@ -133,7 +138,7 @@ Dengan demikian, dari sisi hasil white box testing, kedua sistem dapat dinyataka
 
 Berdasarkan hasil pengujian white box terbaru, sistem POS berbasis Filament dan Laravel 12 konvensional sama-sama memperoleh tingkat keberhasilan sebesar **100%**. Kedua sistem memiliki **78 skenario inti**, seluruhnya berhasil dijalankan, dengan **0 skenario gagal**.
 
-Hasil ini menunjukkan bahwa kedua sistem telah memenuhi skenario fungsional utama yang diuji melalui pendekatan white box testing. Perbedaan utama bukan pada keberhasilan pengujian, melainkan pada karakteristik pengembangan. Filament menawarkan otomatisasi dan standardisasi yang lebih tinggi, sedangkan Laravel 12 konvensional menawarkan fleksibilitas dan kontrol implementasi yang lebih luas.
+Hasil ini menunjukkan bahwa kedua sistem telah memenuhi skenario fungsional utama yang diuji melalui pendekatan white box testing. Perbedaan utama bukan pada keberhasilan pengujian, melainkan pada karakteristik pengembangan dan struktur file pengujian.
 
-Secara objektif, Filament lebih efisien untuk membangun sistem admin/POS dengan kebutuhan CRUD dan manajemen data yang dominan. Laravel 12 konvensional lebih kuat ketika sistem membutuhkan logika bisnis khusus, kontrol response yang detail, dan rancangan antarmuka yang lebih bebas. Namun, pada Laravel konvensional, developer harus menjaga konsistensi controller, validasi, redirect, dan response agar pengujian tetap stabil.
+Filament lebih efisien untuk membangun sistem admin/POS dengan kebutuhan CRUD dan manajemen data yang dominan karena memiliki otomatisasi dan standardisasi yang lebih tinggi. Laravel 12 konvensional lebih kuat ketika sistem membutuhkan logika bisnis khusus, kontrol response yang detail, dan rancangan antarmuka yang lebih bebas. Namun, pada Laravel konvensional, developer harus menjaga konsistensi controller, validasi, redirect, dan response agar pengujian tetap stabil.
 

@@ -2,7 +2,7 @@
 
 ---
 
-## Catatan Penyesuaian Data Terbaru
+## Keterangan
 
 Analisis ini disesuaikan berdasarkan data terbaru pengujian white box pada sistem POS berbasis **Filament** dan **Laravel 12 konvensional**. Pada versi terbaru, jumlah test case pada tabel perbandingan disetarakan menjadi **98 test case pembanding** untuk masing-masing sistem agar analisis dapat dilakukan pada basis yang seimbang.
 

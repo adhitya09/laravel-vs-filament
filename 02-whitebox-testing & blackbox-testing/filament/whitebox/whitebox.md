@@ -6,10 +6,6 @@
 
 Pengujian white box pada sistem POS Filament dilakukan untuk memastikan setiap proses utama pada sistem berjalan sesuai skenario yang telah ditentukan. Pengujian dilakukan terhadap 13 fitur utama sistem POS, yaitu Login/Auth, Dashboard, POS/Kasir, Produk, Kategori, Inventory, Transaksi, Cash Flow, Payment Method, Report, User Management, Role/Permission, dan Setting.
 
-Pada data terbaru, jumlah skenario pengujian disetarakan dengan sistem Laravel 12 konvensional agar analisis perbandingan memiliki basis yang seimbang. Oleh karena itu, total skenario pembanding pada sistem POS Filament menjadi **98 test case**, dengan **98 test case berhasil**, **0 test case gagal**, dan persentase keberhasilan sebesar **100%**.
-
-Pada sistem Filament, file `ReceiptControllerTest.php` tidak dijadikan fitur utama tersendiri dalam rekapitulasi 13 fitur, tetapi digabungkan ke dalam fitur **Transaksi** karena receipt/struk merupakan bagian dari alur transaksi. Selain itu, `ExampleTest.php` tidak dimasukkan ke dalam rekapitulasi fitur utama karena bukan bagian dari fitur operasional sistem POS.
-
 ---
 
 # Tabel 4. Hasil Pengujian White Box Fitur Login / Auth

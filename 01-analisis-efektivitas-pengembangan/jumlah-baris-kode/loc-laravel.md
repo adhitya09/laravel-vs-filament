@@ -1,7 +1,7 @@
 # Laporan Perhitungan LOC (Lines of Code)
 ## Sistem POS Laravel 12 Konvensional
 
-> **Basis laporan:** hasil perhitungan LOC Laravel 12 Konvensional yang dikirimkan. Laporan ini disusun ulang agar klasifikasi fiturnya seimbang dengan laporan Laravel Filament, terutama pada penempatan file migrasi user, pengecualian seeder, dan pemisahan file shared/common.
+> **Basis laporan:** Laporan ini disusun agar klasifikasi fiturnya seimbang dengan laporan Laravel Filament, terutama pada penempatan file migrasi user, pengecualian seeder, dan pemisahan file shared/common.
 
 ## 1. Identitas Perhitungan
 

@@ -15,28 +15,9 @@
 | Pengecualian | File testing, seeder, factory, file log, asset hasil build, `vendor/`, `node_modules/`, `public/build/`, `storage/`, dan `bootstrap/cache/` |
 | Catatan route | `routes/web.php` dipisahkan ke bagian Shared/Common karena pada Laravel konvensional file ini memuat banyak route manual lintas fitur |
 
-## 2. Catatan Penyesuaian agar Seimbang dengan Laravel Filament
+## 2. Detail Perhitungan LOC per Fitur
 
-Pada laporan sebelumnya, file `database/migrations/0001_01_01_000000_create_users_table.php` berada pada fitur **User Management**. Namun, pada laporan Laravel Filament, file migration user dimasukkan ke fitur **Login / Authentication**. Agar klasifikasi kedua sistem seimbang, file migration user pada Laravel konvensional juga dipindahkan ke fitur **Login / Authentication**.
-
-Selain itu, laporan Laravel Filament tidak memasukkan seeder, factory, maupun file testing. Oleh karena itu, pada laporan Laravel konvensional ini, file seeder juga dikeluarkan dari perhitungan total utama agar metode perbandingan lebih setara.
-
-Penyesuaian utama:
-
-| Bagian | Sebelum Penyesuaian | Setelah Diseimbangkan |
-|---|---:|---:|
-| Login / Authentication | 384 LOC | 422 LOC |
-| User Management | 620 LOC | 582 LOC |
-| Produk | 1.012 LOC | 833 LOC |
-| Inventory | 1.091 LOC | 1.050 LOC |
-| CashFlow | 693 LOC | 665 LOC |
-| Payment Method | 404 LOC | 353 LOC |
-| Role / Permission | 599 LOC | 579 LOC |
-| Setting | 341 LOC | 321 LOC |
-
-## 3. Detail Perhitungan LOC per Fitur
-
-### 3.1. Fitur: Login / Authentication
+### 2.1. Fitur: Login / Authentication
 
 **Alasan pengelompokan:** Fitur Login/Authentication digunakan untuk proses autentikasi pengguna, validasi login, session, profil pengguna, konfigurasi autentikasi, dan struktur tabel user sebagai dasar autentikasi.
 
@@ -57,7 +38,7 @@ Penyesuaian utama:
 
 ---
 
-### 3.2. Fitur: Dashboard
+### 2.2. Fitur: Dashboard
 
 **Alasan pengelompokan:** Dashboard digunakan untuk menampilkan ringkasan data utama sistem POS dalam bentuk tampilan dashboard.
 
@@ -73,7 +54,7 @@ Penyesuaian utama:
 
 ---
 
-### 3.3. Fitur: POS / Kasir
+### 2.3. Fitur: POS / Kasir
 
 **Alasan pengelompokan:** Fitur POS/Kasir merupakan fitur inti sistem yang mencakup proses transaksi penjualan, pemilihan produk, metode pembayaran, dan pencetakan resi.
 
@@ -93,7 +74,7 @@ Penyesuaian utama:
 
 ---
 
-### 3.4. Fitur: Produk
+### 2.4. Fitur: Produk
 
 **Alasan pengelompokan:** Fitur Produk digunakan untuk pengelolaan data produk, harga, stok, barcode, status produk, dan tampilan detail produk.
 
@@ -116,7 +97,7 @@ Penyesuaian utama:
 
 ---
 
-### 3.5. Fitur: Kategori
+### 2.5. Fitur: Kategori
 
 **Alasan pengelompokan:** Fitur Kategori digunakan untuk mengelompokkan produk berdasarkan kategori tertentu sehingga data produk lebih terstruktur.
 
@@ -136,7 +117,7 @@ Penyesuaian utama:
 
 ---
 
-### 3.6. Fitur: Inventory
+### 2.6. Fitur: Inventory
 
 **Alasan pengelompokan:** Inventory digunakan untuk pengelolaan stok barang, item inventory, stok masuk, stok keluar, dan penyesuaian stok.
 
@@ -160,7 +141,7 @@ Penyesuaian utama:
 
 ---
 
-### 3.7. Fitur: Transaksi
+### 2.7. Fitur: Transaksi
 
 **Alasan pengelompokan:** Fitur Transaksi digunakan untuk mengelola daftar transaksi, pembuatan transaksi, edit transaksi, detail transaksi, item transaksi, dan dokumen transaksi.
 
@@ -184,7 +165,7 @@ Penyesuaian utama:
 
 ---
 
-### 3.8. Fitur: CashFlow
+### 2.8. Fitur: CashFlow
 
 **Alasan pengelompokan:** CashFlow digunakan untuk pencatatan pemasukan, pengeluaran, sumber arus kas, dan pengelolaan cashbox flow.
 
@@ -207,7 +188,7 @@ Penyesuaian utama:
 
 ---
 
-### 3.9. Fitur: Payment Method
+### 2.9. Fitur: Payment Method
 
 **Alasan pengelompokan:** Payment Method digunakan untuk mengelola metode pembayaran transaksi seperti tunai, QRIS, transfer, kartu, atau e-wallet.
 
@@ -228,7 +209,7 @@ Penyesuaian utama:
 
 ---
 
-### 3.10. Fitur: Report / Laporan
+### 2.10. Fitur: Report / Laporan
 
 **Alasan pengelompokan:** Fitur Report/Laporan digunakan untuk menampilkan, mencetak, dan mengekspor laporan keuangan sistem.
 
@@ -248,7 +229,7 @@ Penyesuaian utama:
 
 ---
 
-### 3.11. Fitur: User Management
+### 2.11. Fitur: User Management
 
 **Alasan pengelompokan:** User Management digunakan untuk pengelolaan data pengguna sistem. File migration user tidak dimasukkan di sini karena sudah dihitung pada Login / Authentication agar seimbang dengan klasifikasi Laravel Filament.
 
@@ -268,7 +249,7 @@ Penyesuaian utama:
 
 ---
 
-### 3.12. Fitur: Role / Permission
+### 2.12. Fitur: Role / Permission
 
 **Alasan pengelompokan:** Role/Permission digunakan untuk mengelola role, hak akses, middleware otorisasi, dan pembatasan akses fitur.
 
@@ -289,7 +270,7 @@ Penyesuaian utama:
 
 ---
 
-### 3.13. Fitur: Setting
+### 2.13. Fitur: Setting
 
 **Alasan pengelompokan:** Fitur Setting digunakan untuk konfigurasi umum sistem seperti identitas toko, alamat, telepon, logo, dan pengaturan printer.
 
@@ -307,7 +288,7 @@ Penyesuaian utama:
 
 ---
 
-## 4. Rekapitulasi Total Seluruh Fitur Utama
+## 3. Rekapitulasi Total Seluruh Fitur Utama
 
 | No | Fitur | Total LOC | Total File | Jenis File Dominan | Tingkat Kompleksitas |
 |---:|---|---:|---:|---|---|
@@ -326,7 +307,7 @@ Penyesuaian utama:
 | 13 | Setting | 321 | 4 | Blade View | Rendah |
 |  | **Total** | **8.814** | **89** |  |  |
 
-## 5. Ringkasan Keseluruhan Project
+## 4. Ringkasan Keseluruhan Project
 
 | Aspek | Hasil |
 |---|---:|
@@ -343,7 +324,7 @@ Penyesuaian utama:
 | Tingkat Otomatisasi Framework | Rendah |
 | Dominasi Business Logic Manual | Transaksi dan POS / Kasir |
 
-## 6. Shared/Common Code
+## 5. Shared/Common Code
 
 Bagian ini berisi file pendukung global yang digunakan lintas fitur. Bagian ini dipisahkan dari 13 fitur utama agar struktur laporan lebih seimbang dengan laporan Laravel Filament.
 
@@ -369,9 +350,9 @@ Bagian ini berisi file pendukung global yang digunakan lintas fitur. Bagian ini 
 **Total LOC Shared/Common:** 1.598  
 **Total File Shared/Common:** 16  
 
-## 7. Fitur dengan LOC Terbesar dan Terkecil
+## 6. Fitur dengan LOC Terbesar dan Terkecil
 
-### 7.1 LOC Terbesar
+### 6.1 LOC Terbesar
 
 | Peringkat | Fitur | Total LOC | Keterangan |
 |---:|---|---:|---|
@@ -381,7 +362,7 @@ Bagian ini berisi file pendukung global yang digunakan lintas fitur. Bagian ini 
 | 4 | Produk | 833 | Mengelola data produk, barcode, detail produk, form produk, dan struktur tabel produk |
 | 5 | Report / Laporan | 720 | Mengelola laporan, PDF laporan, model laporan, export, dan struktur data laporan |
 
-### 7.2 LOC Terkecil
+### 6.2 LOC Terkecil
 
 | Peringkat | Fitur | Total LOC | Keterangan |
 |---:|---|---:|---|
@@ -391,7 +372,7 @@ Bagian ini berisi file pendukung global yang digunakan lintas fitur. Bagian ini 
 | 4 | Payment Method | 353 | CRUD metode pembayaran relatif sederhana |
 | 5 | Login / Authentication | 422 | Autentikasi masih membutuhkan controller, view, model, config, middleware, dan migration user |
 
-## 8. Persentase Kontribusi LOC Tiap Fitur Utama
+## 7. Persentase Kontribusi LOC Tiap Fitur Utama
 
 Persentase berikut dihitung dari total LOC fitur utama sebesar **8.814 LOC**.
 
@@ -412,7 +393,7 @@ Persentase berikut dihitung dari total LOC fitur utama sebesar **8.814 LOC**.
 | Dashboard | 297 | 3,37% |
 | **Total** | **8.814** | **100,00%** |
 
-## 9. Persentase Controller, Blade, Model, Middleware, dan Config terhadap Total Project Unik
+## 8. Persentase Controller, Blade, Model, Middleware, dan Config terhadap Total Project Unik
 
 Persentase berikut dihitung dari total LOC project unik sebesar **10.136 LOC**.
 
@@ -424,7 +405,7 @@ Persentase berikut dihitung dari total LOC project unik sebesar **10.136 LOC**.
 | Middleware | 62 | 0,61% |
 | Config | 159 | 1,57% |
 
-## 10. Catatan File Shared
+## 9. Catatan File Shared
 
 Beberapa file digunakan oleh lebih dari satu fitur. Dalam rekap fitur, file tersebut dapat muncul sesuai fungsi fiturnya. Namun, pada total project unik, file shared hanya dihitung satu kali.
 

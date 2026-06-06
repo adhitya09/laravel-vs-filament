@@ -1,7 +1,7 @@
 # Laporan Perhitungan LOC (Lines of Code)
 ## Sistem POS Laravel Filament
 
-> **Basis laporan:** hasil perhitungan LOC Laravel Filament yang dikirimkan. Laporan ini hanya merapikan struktur ke dalam format laporan MD, memperjelas alasan pengelompokan, dan menyusun ulang bagian rekapitulasi tanpa mengubah angka LOC, total file, maupun tingkat kompleksitas yang sudah tersedia.
+> **Basis laporan:** Laporan ini hanya merapikan struktur ke dalam format laporan MD, memperjelas alasan pengelompokan, dan menyusun ulang bagian rekapitulasi tanpa mengubah angka LOC, total file, maupun tingkat kompleksitas yang sudah tersedia.
 
 ## 1. Identitas Perhitungan
 
